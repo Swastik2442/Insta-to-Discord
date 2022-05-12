@@ -6,7 +6,7 @@ from dotenv import load_dotenv, find_dotenv
 import json, datetime, requests, time, os
 
 load_dotenv(find_dotenv())
-USERNAME = os.getenv("USERNAME")
+USERNAME = os.getenv("IG_USERNAME")
 DISCORD_WEBHOOK = os.getenv("DISCORD_WEBHOOK")
 
 def write_json(new_data):
@@ -54,13 +54,18 @@ def discordsend(user, data):
                     "url" : "https://instagram.com/"+ user,
                     "icon_url" : profileurl
                 },
-                "description" : medcaption,
                 "color" : "12632256",
                 "url" : medurl,
                 "timestamp" : medtime,
                 "image" : {
                     "url" : medpreview
                 },
+                "fields": [
+                    {
+                      "name": medurl,
+                      "value": medcaption
+                    }
+                ],
                 "footer" : {
                     "text" : "Instagram",
                     "icon_url" : "https://media.discordapp.net/attachments/839327846773162014/964711691571040357/instagram.png"
@@ -84,6 +89,7 @@ def discordsend(user, data):
 def main():
     while True:
         print(" "*5 + "Instagram to Discord" + " "*5)
+        print("Getting Info for "+ USERNAME)
         try:
             url = "https://www.instagram.com/"+ USERNAME +"/?__a=1"
             response = urlopen(url)
@@ -93,8 +99,8 @@ def main():
                 break
             else:
                 retcode = discordsend(USERNAME, data_json)
-                print("https://instagram.com/p/" + retcode)
                 if retcode != None:
+                    print("https://instagram.com/p/" + retcode)
                     write_json(retcode)
         except json.decoder.JSONDecodeError: #Prevention for the code to run if Instagram's Rate Limit has been hit
             print("Sussy Insta Bro")
