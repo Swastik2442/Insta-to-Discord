@@ -4,20 +4,22 @@
 
 Send Latest Instagram Posts to Discord using Discord Webhooks
 
+> Note: This only works for Public Accounts.
+
 ## Setup
 
 ### To run Locally
 * Clone the repo using `git clone https://github.com/Swastik2442/Insta-to-Discord.git`
 * Run this command from the Repo Directory `pip install -r requirements.txt --no-cache-dir`
 * Add a File with name `.env` and create the following Variables-
-    * `USERNAME`
+    * `IG_USERNAME`
     * `DISCORD_WEBHOOK` <!-- https://i.imgur.com/f9XnAew.png -->
 
 ### To run Online
 * Fork this Repo
 * Connect your Forked Repo to the Service you are using.
 * Add the following Environment Variables-
-    * `USERNAME`
+    * `IG_USERNAME`
     * `DISCORD_WEBHOOK` <!-- https://i.imgur.com/f9XnAew.png -->
 
 ### Optional Setup
