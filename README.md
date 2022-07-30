@@ -1,4 +1,5 @@
 <!-- Original Author - Swastik2442 (https://github.com/Swastik2442) -->
+> This method doesn't work as of July 2022
 
 # Insta-to-Discord
 
